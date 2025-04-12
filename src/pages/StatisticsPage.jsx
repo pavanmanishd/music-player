@@ -33,6 +33,11 @@ const StatisticsPage = () => {
     const listeningStats = getListeningStats();
     const mostPlayedTracks = getMostPlayedTracks();
     
+    // Add weekly activity data if not already present
+    if (!listeningStats.weeklyActivity) {
+      listeningStats.weeklyActivity = [60, 75, 45, 90, 55, 80, 70]; // Higher values for better visibility
+    }
+    
     setStats({
       topArtists,
       topGenres,
@@ -200,16 +205,21 @@ const StatisticsPage = () => {
       <div>
         <h2 className="text-xl font-bold mb-4">Listening Activity</h2>
         <div className="bg-secondary rounded-lg p-6">
-          <div className="h-48 flex items-end justify-between">
+          <div className="h-64 flex items-end justify-between">
             {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, index) => {
-              const height = Math.floor(Math.random() * 80) + 20; // Random height for demo
+              // Use actual data from stats if available, otherwise use demo data
+              const activityData = stats.listeningStats.weeklyActivity || 
+                [30, 45, 25, 60, 35, 70, 40]; // Demo data if real data not available
+              
+              const height = activityData[index];
               return (
-                <div key={day} className="flex flex-col items-center">
+                <div key={day} className="flex flex-col items-center w-full mx-1">
                   <div 
-                    className="w-8 bg-accent rounded-t-md" 
-                    style={{ height: `${height}%` }}
+                    className="w-12 bg-accent rounded-t-md transition-all duration-500 ease-in-out hover:bg-accent-light hover:shadow-lg" 
+                    style={{ height: `${height}px` }}
                   ></div>
                   <p className="text-text-secondary text-sm mt-2">{day}</p>
+                  <p className="text-xs text-text-secondary">{height}%</p>
                 </div>
               );
             })}
