@@ -351,7 +351,7 @@ export const featuredPlaylist = {
   title: "Playlist of the day",
   tracks: 69,
   duration: "4 hours 37 minutes",
-  image: "https://picsum.photos/200/200", // Using placeholder image
+  image: "https://picsum.photos/1000/1000", // Using placeholder image
   artist: "Brand of Sacrifice",
   releaseDate: "April, 2023",
   currentSong: "Between Death and Dreams",

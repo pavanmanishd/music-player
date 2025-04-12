@@ -9,7 +9,7 @@ const Layout = () => {
   const { showQueue } = useMusicContext();
 
   return (
-    <div className="flex flex-col h-screen bg-primary text-text-primary">
+    <div className="flex flex-col h-screen bg-gradient-to-br from-gray-900 via-purple-900/20 to-black text-text-primary">
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         <Sidebar />
@@ -20,14 +20,14 @@ const Layout = () => {
           <Navbar />
           
           {/* Main content area */}
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 overflow-y-auto">
             <Outlet />
           </div>
         </div>
         
         {/* Queue panel (conditionally rendered) */}
         {showQueue && (
-          <div className="w-64 bg-secondary border-l border-gray-800">
+          <div className="w-64 bg-black/20 border-l border-gray-800">
             <QueuePanel />
           </div>
         )}

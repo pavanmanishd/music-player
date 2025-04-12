@@ -99,7 +99,7 @@ const MusicPlayer = () => {
   }
   
   return (
-    <div className="h-20 bg-secondary border-t border-gray-800 px-4 flex items-center">
+    <div className="h-24 bg-black/30 backdrop-blur-lg border-t border-gray-800 flex items-center px-4 gap-4">
       {/* Track info */}
       <div className="flex items-center w-1/4">
         <img 

@@ -27,7 +27,7 @@ const Navbar = () => {
   };
   
   return (
-    <div className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-900 to-black">
+    <div className="flex items-center justify-between p-4 bg-black/10">
       {/* If there's any branding in the navbar */}
       
       {/* Search bar */}

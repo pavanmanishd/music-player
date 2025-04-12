@@ -39,31 +39,31 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-gradient-to-b from-gray-900 to-black text-white p-6">
+    <div className="flex flex-col h-full p-6">
       {/* Featured Playlist Section */}
-      <div className="flex mb-8 h-64">
+      <div className="flex mb-8 h-70 gap-4">
         {/* Left section - Playlist of the day */}
-        <div className="w-1/3 bg-purple-800 rounded-lg p-6 mr-4 flex flex-col">
-          <div className="text-sm text-gray-300 mb-1">{featuredPlaylist.tracks} tracks • {featuredPlaylist.duration}</div>
-          <h2 className="text-2xl font-bold mb-4">Playlist of the day</h2>
+        <div className="w-1/6 bg-black/20 rounded-lg p-6 flex flex-col relative overflow-hidden">
+          <div className="text-sm text-gray-300 mb-1">69 tracks • 4 hours 37 minutes</div>
+          <h2 className="text-2xl font-bold mb-4 font-ephesis">Playlist of the day</h2>
           <div className="mt-auto">
-            <img src={featuredPlaylist.image} alt="Featured Playlist" className="w-24 h-24 rounded-md shadow-lg" />
+            <img src={featuredPlaylist.image} alt="Featured Playlist" className="scale-80 rounded-md shadow-lg" />
           </div>
         </div>
         
-        {/* Right section - Featured song */}
-        <div className="w-2/3 rounded-lg relative overflow-hidden">
+        {/* Middle section - Featured song */}
+        <div className="w-3/6 rounded-lg relative overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center" 
             style={{ 
               backgroundImage: `url(${featuredPlaylist.image})`,
-              filter: 'brightness(0.5)'
+              filter: 'brightness(0.6)'
             }}
           ></div>
           <div className="absolute inset-0 flex flex-col justify-between p-6">
             <div>
-              <div className="text-sm text-gray-300">{featuredPlaylist.artist} • {featuredPlaylist.releaseDate}</div>
-              <h2 className="text-4xl font-bold mt-2">{featuredPlaylist.currentSong}</h2>
+              <div className="text-sm text-gray-300">Brand of Sacrifice • April, 2023</div>
+              <h2 className="text-3xl font-bold mt-2">Between Death and Dreams</h2>
             </div>
             
             <div className="flex justify-between items-center">
@@ -85,6 +85,39 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        
+        {/* Right section - For You */}
+        <div className="w-2/6 bg-gradient-to-br from-indigo-900/40 to-indigo-800/30 rounded-lg p-6 flex flex-col">
+          <h2 className="text-lg font-bold mb-3">For You</h2>
+          
+          <div className="flex-1 flex flex-col">
+            <div className="relative w-full h-full flex flex-col">
+              <img 
+                src={userPlaylists[0]?.image || featuredPlaylist.image} 
+                alt="Track" 
+                className="w-full h-40 rounded-md object-cover mb-2" 
+              />
+              <div className="flex flex-col items-center mt-auto">
+                <p className="text-lg font-medium">Starlight</p>
+                <p className="text-sm text-gray-300">Muse</p>
+              </div>
+              <div 
+                className="absolute bottom-0 right-0 w-8 h-8 bg-indigo-500/80 rounded-full flex items-center justify-center cursor-pointer hover:bg-indigo-400/80 transition-colors"
+                onClick={() => playTrack({
+                  id: 'recommendation-1',
+                  title: 'Starlight',
+                  artist: 'Muse',
+                  album: 'Black Holes and Revelations',
+                  cover: userPlaylists[0]?.image || featuredPlaylist.image,
+                  duration: 240,
+                  path: '/audio/sample.mp3'
+                })}
+              >
+                <PlayIcon className="w-4 h-4 text-white ml-0.5" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       
       {/* Navigation Tabs */}
@@ -92,7 +125,7 @@ const Dashboard = () => {
         {tabs.map(tab => (
           <button
             key={tab}
-            className={`px-4 py-2 font-medium ${activeTab === tab ? 'text-accent border-b-2 border-accent' : 'text-gray-400'}`}
+            className={`px-4 py-2 font-medium ${activeTab === tab ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-400'}`}
             onClick={() => setActiveTab(tab)}
           >
             {tab}

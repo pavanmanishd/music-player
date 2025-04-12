@@ -14,7 +14,7 @@ import {
 
 const Sidebar = () => {
   return (
-    <div className="w-64 bg-secondary flex flex-col h-full border-r border-gray-800">
+    <div className="w-64 bg-black/20 flex flex-col h-full border-r border-gray-800">
       {/* Logo */}
       <div className="p-6 mb-8">
         <h1 className="text-3xl font-normal font-['Ephesis'] text-white">Melo</h1>
