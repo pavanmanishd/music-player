@@ -345,3 +345,33 @@ export const getRecentlyPlayed = () => {
     album.tracks.slice(0, 1)
   ).slice(0, 5);
 };
+
+// Featured playlist data
+export const featuredPlaylist = {
+  title: "Playlist of the day",
+  tracks: 69,
+  duration: "4 hours 37 minutes",
+  image: "https://picsum.photos/200/200", // Using placeholder image
+  artist: "Brand of Sacrifice",
+  releaseDate: "April, 2023",
+  currentSong: "Between Death and Dreams",
+  songDuration: "4:12"
+};
+
+// Playlists data
+export const userPlaylists = [
+  { id: 1, title: 'Workout at the gym', tracks: 29, duration: '2h 15m', date: '23 June, 2023', image: 'https://picsum.photos/200/200?random=1' },
+  { id: 2, title: 'Tracks without lyrics', tracks: 35, duration: '2h 15m', date: '27 April, 2023', image: 'https://picsum.photos/200/200?random=2' },
+  { id: 3, title: 'Funny stuff', tracks: 108, duration: '6h 48m', date: '12 February, 2023', image: 'https://picsum.photos/200/200?random=3' },
+  { id: 4, title: 'Careful driving vibes', tracks: 84, duration: '5h 09m', date: '18 May, 2023', image: 'https://picsum.photos/200/200?random=4' },
+  { id: 5, title: 'Philosophy during walking', tracks: 52, duration: '3h 59m', date: '21 December, 2022', image: 'https://picsum.photos/200/200?random=5' },
+  { id: 6, title: 'Fitness for the whole family', tracks: 12, duration: '1h 5m', date: '23 March, 2023', image: 'https://picsum.photos/200/200?random=6' },
+  { id: 7, title: 'The best of the best', tracks: 24, duration: '2h 15m', date: '23 June, 2023', image: 'https://picsum.photos/200/200?random=7' },
+];
+
+// Statistics data
+export const statistics = {
+  likes: 247,
+  tracks: 363,
+  streams: 29
+};

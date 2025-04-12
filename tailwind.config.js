@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'ephesis': ['Ephesis', 'cursive'],
+      },
       colors: {
         primary: "#1a1a1a",
         secondary: "#2a2a2a",

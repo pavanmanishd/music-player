@@ -27,7 +27,9 @@ const Navbar = () => {
   };
   
   return (
-    <div className="h-16 border-b border-gray-800 flex items-center justify-between px-6">
+    <div className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-900 to-black">
+      {/* If there's any branding in the navbar */}
+      
       {/* Search bar */}
       <form onSubmit={handleSearch} className="w-1/3">
         <div className="relative">
