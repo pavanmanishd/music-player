@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const LandingPage = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-900/20 to-black text-white relative overflow-hidden">
       {/* Animated background elements */}
@@ -19,9 +20,18 @@ const LandingPage = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="w-full fixed z-50"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between ">
-          <div className="tracking-wider text-5xl font-bold font-['Ephesis']">Melo</div>
-          <div className="flex items-center gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+          <div className="tracking-wider text-4xl sm:text-5xl font-bold font-['Ephesis']">Melo</div>
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button className="text-white p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+          {/* Desktop menu */}
+          <div className="hidden md:flex items-center gap-6">
             <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
             <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
             <a href="#about" className="text-gray-300 hover:text-white transition-colors">About</a>
@@ -30,17 +40,34 @@ const LandingPage = () => {
             </Link>
           </div>
         </div>
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="md:hidden bg-gray-900/95 backdrop-blur-sm"
+          >
+            <div className="px-4 pt-2 pb-3 space-y-1">
+              <a href="#features" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">Features</a>
+              <a href="#pricing" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">Pricing</a>
+              <a href="#about" className="block px-3 py-2 text-gray-300 hover:text-white transition-colors">About</a>
+              <Link to="/dashboard" className="block px-3 py-2 text-accent hover:text-accent-hover transition-colors">
+                Sign In
+              </Link>
+            </div>
+          </motion.div>
+        )}
       </motion.nav>
-      
+
       {/* Hero section */}
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="container mx-auto px-6 pt-32 pb-20 flex flex-col items-center text-center"
+        className="container mx-auto px-4 sm:px-6 pt-28 sm:pt-32 pb-16 sm:pb-20 flex flex-col items-center text-center"
       >
-        <h1 className="text-5xl md:text-6xl font-bold mb-6">Your Music, Your Way</h1>
-        <p className="text-xl text-gray-300 max-w-2xl mb-10">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Your Music, Your Way</h1>
+        <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mb-8 sm:mb-10 px-4">
           Stream millions of songs, create playlists, and discover new music with MELO - the ultimate music streaming platform.
         </p>
         <Link to="/dashboard" className="bg-accent hover:bg-accent-hover text-white text-lg font-medium px-8 py-3 rounded-full transition-colors">
@@ -48,7 +75,7 @@ const LandingPage = () => {
         </Link>
         
         {/* Preview image */}
-        <div className="mt-16 w-full max-w-4xl mx-auto relative">
+        <div className="mt-16 hidden md:block w-full max-w-4xl mx-auto relative">
           <motion.img 
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
