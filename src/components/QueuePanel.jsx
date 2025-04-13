@@ -5,8 +5,8 @@ const QueuePanel = () => {
   const { queue, currentTrack, playTrack, setShowQueue } = useMusicContext();
   
   return (
-    <div className="h-full flex flex-col">
-      <div className="p-4 border-b border-gray-800 flex items-center justify-between">
+    <div className="h-full flex flex-col bg-black/10 backdrop-blur-sm">
+      <div className="p-4 border-b border-white/10 flex items-center justify-between">
         <h3 className="font-medium">Queue</h3>
         <button 
           className="text-text-secondary hover:text-text-primary"

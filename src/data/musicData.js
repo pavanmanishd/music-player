@@ -118,25 +118,32 @@ export const albums = [
 // Playlists
 export const playlists = [
   {
-    id: 'playlist1',
+    id: '1',
     title: 'Chill Vibes',
     cover: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNoaWxsfGVufDB8fDB8fHww',
     trackCount: 12,
     duration: '45 min'
   },
   {
-    id: 'playlist2',
+    id: '2',
     title: 'Workout Mix',
     cover: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d29ya291dHxlbnwwfHwwfHx8MA%3D%3D',
     trackCount: 15,
     duration: '58 min'
   },
   {
-    id: 'playlist3',
+    id: '3',
     title: 'Focus & Study',
     cover: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3R1ZHl8ZW58MHx8MHx8fDA%3D',
     trackCount: 20,
     duration: '1 hr 15 min'
+  },
+  {
+    id: '4',
+    title: 'Relaxation',
+    cover: 'https://picsum.photos/800/800?random=9',
+    trackCount: 10,
+    duration: '40 min'
   }
 ];
 

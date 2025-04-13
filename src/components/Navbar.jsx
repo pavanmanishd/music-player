@@ -17,7 +17,7 @@ const Navbar = () => {
       navigate(`/search?q=${encodeURIComponent(query)}`);
     } else if (location.pathname === '/search') {
       // If query is empty and we're on search page, go back to home
-      navigate('/dashboard');
+      navigate('/search');
     }
   };
   
@@ -27,7 +27,7 @@ const Navbar = () => {
   };
   
   return (
-    <div className="flex items-center justify-between p-4 bg-black/10">
+    <div className="flex items-center justify-between p-4 bg-black/10 backdrop-blur-sm border-b border-white/10">
       {/* If there's any branding in the navbar */}
       
       {/* Search bar */}
@@ -37,7 +37,7 @@ const Navbar = () => {
           <input
             type="text"
             placeholder="Search by artists, songs or albums"
-            className="w-full bg-gray-800 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-accent"
+            className="w-full bg-white/5 backdrop-blur-sm rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-white/20"
             value={searchQuery}
             onChange={handleSearchChange}
           />

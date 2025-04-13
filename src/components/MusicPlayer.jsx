@@ -92,7 +92,7 @@ const MusicPlayer = () => {
   
   if (!currentTrack) {
     return (
-      <div className="h-20 bg-secondary border-t border-gray-800 flex items-center justify-center text-text-secondary">
+      <div className="h-20 border-t border-gray-800 flex items-center justify-center text-text-secondary">
         No track selected
       </div>
     );

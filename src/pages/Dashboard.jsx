@@ -93,9 +93,9 @@ const Dashboard = () => {
           <div className="flex-1 flex flex-col">
             <div className="relative w-full h-full flex flex-col">
               <img 
-                src={userPlaylists[0]?.image || featuredPlaylist.image} 
+                src={"https://picsum.photos/1000/200?random=1" || featuredPlaylist.image} 
                 alt="Track" 
-                className="w-full h-40 rounded-md object-cover mb-2" 
+                className="w-full h-3/4 rounded-md object-cover mb-2" 
               />
               <div className="flex flex-col items-center mt-auto">
                 <p className="text-lg font-medium">Starlight</p>
@@ -121,11 +121,11 @@ const Dashboard = () => {
       </div>
       
       {/* Navigation Tabs */}
-      <div className="flex border-b border-gray-800 mb-6">
+      <div className="flex border-b border-white/10 mb-6">
         {tabs.map(tab => (
           <button
             key={tab}
-            className={`px-4 py-2 font-medium ${activeTab === tab ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-400'}`}
+            className={`px-4 py-2 font-medium ${activeTab === tab ? 'text-white border-b-2 border-white' : 'text-gray-400 hover:text-white/80'}`}
             onClick={() => setActiveTab(tab)}
           >
             {tab}
@@ -138,7 +138,7 @@ const Dashboard = () => {
         {/* Playlists Section */}
         <div className="flex-1">
           {userPlaylists.map(playlist => (
-            <div key={playlist.id} className="flex items-center justify-between py-3 hover:bg-gray-800 rounded-md px-2 group">
+            <div key={playlist.id} className="flex items-center justify-between py-3 hover:bg-white/5 rounded-md px-2 group">
               <div className="flex items-center">
                 <img src={playlist.image} alt={playlist.title} className="w-12 h-12 rounded-md mr-4" />
                 <div>
