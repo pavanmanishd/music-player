@@ -12,13 +12,12 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col h-screen bg-gradient-to-br from-gray-900 via-purple-900/20 to-black text-text-primary">
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden pb-20 sm:pb-24"> {/* Add padding bottom equal to music player height */}
         <Sidebar />
         
         <div className="flex-1 flex flex-col overflow-hidden">
           <Navbar />
           
-          {/* Adjusted padding for mobile */}
           <div className="flex-1 overflow-y-auto px-2 sm:px-4 md:px-8 py-2 sm:py-4 md:py-6">
             <AnimatePresence mode="wait">
               <Outlet />

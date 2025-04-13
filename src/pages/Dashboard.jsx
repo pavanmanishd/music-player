@@ -126,7 +126,55 @@ const Dashboard = () => {
       {/* Main content area with playlists */}
       <div className="flex-1">
         <div className="card">
-          <div className="divide-y divide-white/10">
+          {/* Desktop view */}
+          <table className="w-full hidden md:table">
+            <thead>
+              <tr className="table-header">
+                <th className="p-4 w-12">#</th>
+                <th className="p-4">Title</th>
+                <th className="p-4">Artist</th>
+                <th className="p-4">Album</th>
+                <th className="p-4">Duration</th>
+                <th className="p-4 w-16"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {userPlaylists.map((playlist, index) => (
+                <tr 
+                  key={playlist.id}
+                  className="hover:bg-white/5 cursor-pointer"
+                  onClick={() => playTrack({
+                    id: `${playlist.id}-track-1`,
+                    title: playlist.title,
+                    artist: playlist.artist || 'Various Artists',
+                    album: playlist.title,
+                    cover: playlist.image,
+                    duration: 180,
+                    path: playlist.audioPath || '/audio/sample.mp3'
+                  })}
+                >
+                  <td className="p-4">{index + 1}</td>
+                  <td className="p-4">
+                    <div className="flex items-center">
+                      <img src={playlist.image} alt={playlist.title} className="w-12 h-12 rounded object-cover mr-3" />
+                      <span className="font-medium">{playlist.title}</span>
+                    </div>
+                  </td>
+                  <td className="p-4">{playlist.artist || 'Various Artists'}</td>
+                  <td className="p-4">{playlist.title}</td>
+                  <td className="p-4">{Math.floor(playlist.tracks * 3)} min</td>
+                  <td className="p-4">
+                    <button className="hover:text-white/80">
+                      <EllipsisHorizontalIcon className="w-5 h-5" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* Mobile view */}
+          <div className="divide-y divide-white/10 md:hidden">
             {userPlaylists.map(playlist => (
               <div 
                 key={playlist.id}
@@ -148,7 +196,6 @@ const Dashboard = () => {
                 />
                 <div className="ml-3 flex-1 min-w-0">
                   <div className="font-medium truncate">{playlist.title}</div>
-                  <div className="text-sm text-gray-400 truncate">{playlist.tracks} tracks</div>
                 </div>
               </div>
             ))}
