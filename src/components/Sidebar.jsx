@@ -11,14 +11,23 @@ import {
   PlusIcon,
   ChartBarIcon
 } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 
 const Sidebar = () => {
   return (
-    <div className="w-64 bg-black/10 backdrop-blur-sm flex flex-col h-full border-r border-white/10">
-      {/* Logo */}
-      <div className="p-6 mb-8">
+    <motion.div 
+      className="w-64 bg-black/10 backdrop-blur-sm flex flex-col h-full border-r border-white/10"
+      initial={{ x: -50 }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {/* Logo with subtle animation */}
+      <motion.div 
+        className="p-6 mb-8"
+        whileHover={{ scale: 1.02 }}
+      >
         <h1 className="text-7xl font-normal font-['Ephesis'] text-white">Melo</h1>
-      </div>
+      </motion.div>
       
       {/* Main navigation */}
       <div className="px-2">
@@ -71,7 +80,7 @@ const Sidebar = () => {
           <span>Create Playlist</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

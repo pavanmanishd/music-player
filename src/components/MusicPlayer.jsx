@@ -13,6 +13,7 @@ import {
 } from '@heroicons/react/24/solid';
 import { HeartIcon as HeartOutlineIcon } from '@heroicons/react/24/outline';
 import { useMusicContext } from '../context/MusicContext';
+import { motion } from 'framer-motion';
 
 const MusicPlayer = () => {
   const { 
@@ -99,7 +100,12 @@ const MusicPlayer = () => {
   }
   
   return (
-    <div className="h-24 bg-black/30 backdrop-blur-lg border-t border-gray-800 flex items-center px-4 gap-4">
+    <motion.div 
+      className="h-24 bg-black/30 backdrop-blur-lg border-t border-gray-800 flex items-center px-4 gap-4"
+      initial={{ y: 100 }}
+      animate={{ y: 0 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+    >
       {/* Track info */}
       <div className="flex items-center w-1/4">
         <img 
@@ -208,7 +214,7 @@ const MusicPlayer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
