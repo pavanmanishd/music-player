@@ -137,29 +137,64 @@ const Dashboard = () => {
       <div className="flex flex-1 gap-6">
         {/* Playlists Section */}
         <div className="flex-1">
-          {userPlaylists.map(playlist => (
-            <div key={playlist.id} className="flex items-center justify-between py-3 hover:bg-white/5 rounded-md px-2 group">
-              <div className="flex items-center">
-                <img src={playlist.image} alt={playlist.title} className="w-12 h-12 rounded-md mr-4" />
-                <div>
-                  <h3 className="font-medium">{playlist.title}</h3>
-                  <p className="text-sm text-gray-400">{playlist.tracks} tracks • {playlist.duration}</p>
-                </div>
-              </div>
-              <div className="flex items-center">
-                <span className="text-sm text-gray-400 mr-4">{playlist.date}</span>
-                <button 
-                  className="opacity-0 group-hover:opacity-100 transition-opacity"
-                  onClick={() => handlePlayPlaylist(playlist)}
-                >
-                  <PlayIcon className="w-8 h-8 text-white bg-accent rounded-full p-1" />
-                </button>
-                <button className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <EllipsisHorizontalIcon className="w-6 h-6 text-gray-400" />
-                </button>
-              </div>
-            </div>
-          ))}
+          <div className="card overflow-hidden">
+            <table className="w-full">
+              <thead>
+                <tr className="table-header">
+                  <th className="p-4">Title</th>
+                  <th className="p-4">Tracks</th>
+                  <th className="p-4">Duration</th>
+                  <th className="p-4 text-right">Date Added</th>
+                  <th className="p-4 w-16"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {userPlaylists.map(playlist => {
+                  const playlistTrack = {
+                    id: `${playlist.id}-track-1`,
+                    title: playlist.title,
+                    artist: playlist.artist || 'Various Artists',
+                    album: playlist.title,
+                    cover: playlist.image,
+                    duration: 180,
+                    path: playlist.audioPath || '/audio/sample.mp3'
+                  };
+
+                  return (
+                    <tr 
+                      key={playlist.id}
+                      className="table-row"
+                    >
+                      <td 
+                        className="p-4 cursor-pointer"
+                        onClick={() => playTrack(playlistTrack)}
+                      >
+                        <div className="flex items-center">
+                          <img 
+                            src={playlist.image} 
+                            alt={playlist.title} 
+                            className="w-10 h-10 rounded mr-3 shadow-md"
+                          />
+                          <span>{playlist.title}</span>
+                        </div>
+                      </td>
+                      <td className="p-4">{playlist.tracks} tracks</td>
+                      <td className="p-4">{playlist.duration}</td>
+                      <td className="p-4 text-right">{playlist.date}</td>
+                      <td className="p-4 text-right">
+                        <button 
+                          className="text-text-secondary hover:text-accent transition-colors"
+                          onClick={() => playTrack(playlistTrack)}
+                        >
+                          <PlayIcon className="w-5 h-5" />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

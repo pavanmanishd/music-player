@@ -332,7 +332,7 @@ const LandingPage = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-10 pt-6 border-t border-gray-800/50 flex flex-col md:flex-row items-center justify-between"
         >
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">© 2023 MELO. All rights reserved.</p>
+          <p className="text-gray-400 text-sm mb-4 md:mb-0">© 2025 MELO. All rights reserved.</p>
           <div className="flex items-center gap-4 hover:gap-6 transition-all">
             <a href="#" className="text-gray-400 hover:text-white transition-colors">
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
