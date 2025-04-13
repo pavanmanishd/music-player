@@ -93,7 +93,7 @@ const MusicPlayer = () => {
   
   if (!currentTrack) {
     return (
-      <div className="h-20 border-t border-gray-800 flex items-center justify-center text-text-secondary">
+      <div className="h-20 border-t border-gray-800 flex items-center justify-center text-text-secondary fixed bottom-0 left-0 right-0 bg-black/30 backdrop-blur-lg">
         No track selected
       </div>
     );
@@ -101,41 +101,31 @@ const MusicPlayer = () => {
   
   return (
     <motion.div 
-      className="h-24 bg-black/30 backdrop-blur-lg border-t border-gray-800 flex items-center px-4 gap-4"
+      className="h-20 sm:h-24 bg-black/30 backdrop-blur-lg border-t border-gray-800 flex items-center px-2 sm:px-4 gap-2 sm:gap-4 fixed bottom-0 left-0 right-0 z-50"
       initial={{ y: 100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     >
       {/* Track info */}
-      <div className="flex items-center w-1/4">
+      <div className="flex items-center w-1/3 sm:w-1/4 min-w-0">
         <img 
           src={currentTrack.cover} 
           alt={currentTrack.title} 
-          className="w-12 h-12 object-cover rounded mr-3"
+          className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded mr-2 sm:mr-3"
         />
-        <div>
+        <div className="min-w-0">
           <h4 className="text-sm font-medium truncate">{currentTrack.title}</h4>
-          <Link to={`/artist/${currentTrack.artistId}`} className="text-xs text-text-secondary hover:underline">
+          <Link to={`/artist/${currentTrack.artistId}`} className="text-xs text-text-secondary hover:underline truncate block">
             {currentTrack.artist}
           </Link>
         </div>
-        <button 
-          className="ml-4"
-          onClick={() => toggleFavorite(currentTrack.id)}
-        >
-          {favorites.includes(currentTrack.id) ? (
-            <HeartIcon className="w-5 h-5 text-accent" />
-          ) : (
-            <HeartOutlineIcon className="w-5 h-5" />
-          )}
-        </button>
       </div>
       
       {/* Player controls */}
       <div className="flex-1 flex flex-col items-center">
-        <div className="flex items-center gap-4 mb-2">
+        <div className="flex items-center gap-2 sm:gap-4 mb-1 sm:mb-2">
           <button 
-            className={`p-1 rounded-full ${isShuffled ? 'text-accent' : 'text-text-secondary'}`}
+            className="hidden sm:block p-1 rounded-full text-text-secondary"
             onClick={() => setIsShuffled(!isShuffled)}
           >
             <ArrowsRightLeftIcon className="w-4 h-4" />
@@ -144,26 +134,26 @@ const MusicPlayer = () => {
             className="p-1 text-text-secondary hover:text-text-primary"
             onClick={playPreviousTrack}
           >
-            <BackwardIcon className="w-5 h-5" />
+            <BackwardIcon className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
           <button 
-            className="p-2 bg-white text-black rounded-full hover:bg-gray-200"
+            className="p-1.5 sm:p-2 bg-white text-black rounded-full hover:bg-gray-200"
             onClick={() => setIsPlaying(!isPlaying)}
           >
             {isPlaying ? (
-              <PauseIcon className="w-5 h-5" />
+              <PauseIcon className="w-4 h-4 sm:w-5 sm:h-5" />
             ) : (
-              <PlayIcon className="w-5 h-5" />
+              <PlayIcon className="w-4 h-4 sm:w-5 sm:h-5" />
             )}
           </button>
           <button 
             className="p-1 text-text-secondary hover:text-text-primary"
             onClick={playNextTrack}
           >
-            <ForwardIcon className="w-5 h-5" />
+            <ForwardIcon className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
           <button 
-            className={`p-1 rounded-full ${isRepeating ? 'text-accent' : 'text-text-secondary'}`}
+            className="hidden sm:block p-1 rounded-full text-text-secondary"
             onClick={() => setIsRepeating(!isRepeating)}
           >
             <ArrowPathIcon className="w-4 h-4" />
@@ -172,7 +162,7 @@ const MusicPlayer = () => {
         
         {/* Progress bar */}
         <div className="w-full flex items-center gap-2">
-          <span className="text-xs text-text-secondary">{formatTime(currentTime)}</span>
+          <span className="text-xs text-text-secondary hidden sm:block">{formatTime(currentTime)}</span>
           <div 
             ref={progressRef}
             className="flex-1 h-1 bg-gray-700 rounded-full cursor-pointer"
@@ -187,12 +177,12 @@ const MusicPlayer = () => {
               style={{ width: `${(currentTime / duration) * 100}%` }}
             ></div>
           </div>
-          <span className="text-xs text-text-secondary">{formatTime(duration)}</span>
+          <span className="text-xs text-text-secondary hidden sm:block">{formatTime(duration)}</span>
         </div>
       </div>
       
       {/* Volume and additional controls */}
-      <div className="w-1/4 flex items-center justify-end gap-4">
+      <div className="flex items-center gap-2 sm:gap-4 w-auto sm:w-1/4 justify-end">
         <button 
           className="text-text-secondary hover:text-text-primary"
           onClick={toggleQueue}
@@ -200,7 +190,7 @@ const MusicPlayer = () => {
           <QueueListIcon className="w-5 h-5" />
         </button>
         
-        <div className="flex items-center gap-2">
+        <div className="hidden sm:flex items-center gap-2">
           <SpeakerWaveIcon className="w-5 h-5 text-text-secondary" />
           <div 
             ref={volumeRef}

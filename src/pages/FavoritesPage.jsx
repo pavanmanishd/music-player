@@ -35,7 +35,7 @@ const FavoritesPage = () => {
             onClick={() => playTrack(tracks[0], tracks)}
           >
             <PlayIcon className="w-5 h-5" />
-            <span>Play All</span>
+            <span>Play</span>
           </button>
         )}
       </div>

@@ -22,12 +22,17 @@ body {
 }
 
 @layer components {
-  .sidebar-icon {
-    @apply flex items-center gap-3 py-2 px-4 text-text-secondary hover:text-text-primary transition-colors;
+  .sidebar-icon-mobile {
+    @apply flex items-center justify-center p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/5 transition-colors;
   }
   
-  .sidebar-icon.active {
-    @apply text-text-primary;
+  /* Update existing sidebar-icon class */
+  .sidebar-icon {
+    @apply flex items-center gap-3 px-4 py-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/5 transition-colors;
+  }
+  
+  .active {
+    @apply bg-white/5 text-text-primary;
   }
   
   .btn {
@@ -83,4 +88,18 @@ body {
 
 .animation-delay-400 {
   animation-delay: 0.4s;
+}
+
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+.main-content {
+  padding-bottom: 6rem; /* Ensures content doesn't get hidden behind the player */
 }

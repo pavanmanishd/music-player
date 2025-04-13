@@ -18,7 +18,8 @@ const Layout = () => {
         <div className="flex-1 flex flex-col overflow-hidden">
           <Navbar />
           
-          <div className="flex-1 overflow-y-auto px-8 py-6">
+          {/* Adjusted padding for mobile */}
+          <div className="flex-1 overflow-y-auto px-2 sm:px-4 md:px-8 py-2 sm:py-4 md:py-6">
             <AnimatePresence mode="wait">
               <Outlet />
             </AnimatePresence>

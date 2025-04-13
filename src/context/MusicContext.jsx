@@ -14,9 +14,27 @@ export const MusicProvider = ({ children }) => {
   const [volume, setVolume] = useState(0.7);
   const [isShuffled, setIsShuffled] = useState(false);
   const [isRepeating, setIsRepeating] = useState(false);
-  const [favorites, setFavorites] = useState([]);
-  // Changed default value to true so queue is open by default
-  const [showQueue, setShowQueue] = useState(true);
+  const [favorites, setFavorites] = useState([
+    'track1',
+    'track2',
+    'track3',
+    'track4',
+  ]);
+  // Modified showQueue state with screen size check
+  const [showQueue, setShowQueue] = useState(() => {
+    // Check if window width is greater than 768px (desktop)
+    return window.innerWidth > 768;
+  });
+
+  // Add resize listener to handle responsive behavior
+  useEffect(() => {
+    const handleResize = () => {
+      setShowQueue(window.innerWidth > 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   // New state for additional features
   const [listenLater, setListenLater] = useState([]);

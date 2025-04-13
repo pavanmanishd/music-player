@@ -27,17 +27,15 @@ const Navbar = () => {
   };
   
   return (
-    <div className="flex items-center justify-between p-4 bg-black/10 backdrop-blur-sm border-b border-white/10">
-      {/* If there's any branding in the navbar */}
-      
+    <div className="flex items-center justify-between p-2 sm:p-4 bg-black/10 backdrop-blur-sm border-b border-white/10">
       {/* Search bar */}
-      <form onSubmit={handleSearch} className="w-1/3">
+      <form onSubmit={handleSearch} className="w-full sm:w-1/3">
         <div className="relative">
-          <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-gray-400" />
           <input
             type="text"
-            placeholder="Search by artists, songs or albums"
-            className="w-full bg-white/5 backdrop-blur-sm rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-white/20"
+            placeholder="Search..."
+            className="w-full bg-white/5 backdrop-blur-sm rounded-full py-1.5 sm:py-2 pl-9 sm:pl-10 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-white/20"
             value={searchQuery}
             onChange={handleSearchChange}
           />
@@ -45,16 +43,16 @@ const Navbar = () => {
       </form>
       
       {/* User profile */}
-      <div className="flex items-center gap-4">
-        <button className="p-2 rounded-full hover:bg-gray-800">
-          <BellIcon className="w-5 h-5" />
+      <div className="flex items-center gap-2 sm:gap-4 ml-2">
+        <button className="p-1.5 sm:p-2 rounded-full hover:bg-gray-800">
+          <BellIcon className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
-        <button className="flex items-center gap-2 bg-gray-800 rounded-full py-1 px-3 hover:bg-gray-700">
-          <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-            <span className="text-sm font-medium">M</span>
+        <button className="flex items-center gap-2 bg-gray-800 rounded-full py-1 px-2 sm:px-3 hover:bg-gray-700">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-accent flex items-center justify-center">
+            <span className="text-xs sm:text-sm font-medium">M</span>
           </div>
-          <span className="text-sm">My channel</span>
-          <ChevronDownIcon className="w-4 h-4" />
+          <span className="hidden sm:block text-sm">My channel</span>
+          <ChevronDownIcon className="w-3 h-3 sm:w-4 sm:h-4" />
         </button>
       </div>
     </div>
