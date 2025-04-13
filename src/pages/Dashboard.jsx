@@ -54,7 +54,7 @@ const Dashboard = () => {
         {/* Middle section - Featured song */}
         <div className="w-full md:w-3/6 rounded-lg relative min-h-[150px] sm:min-h-[200px] md:min-h-0">
           <div 
-            className="absolute inset-0 bg-cover bg-center" 
+            className="absolute inset-0 bg-cover bg-center rounded-lg" 
             style={{ 
               backgroundImage: `url(${featuredPlaylist.image})`,
               filter: 'brightness(0.6)'
