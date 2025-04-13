@@ -22,6 +22,27 @@ export const artists = [
     image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmFuZHxlbnwwfHwwfHx8MA%3D%3D',
     subscribers: '3.2M followers',
     bio: 'Quantum Beats is a collective of producers and musicians pushing the boundaries of electronic and hip-hop fusion. Known for their innovative production techniques and genre-defying approach, they have become influential figures in the underground music scene.'
+  },
+  {
+    id: 'artist4',
+    name: 'Luna Eclipse',
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    subscribers: '1.5M followers',
+    bio: 'Luna Eclipse is an indie-pop sensation known for her ethereal vocals and dreamy melodies. Her music weaves together elements of dream pop, indie folk, and electronic music, creating a unique sonic landscape that has captivated audiences worldwide.'
+  },
+  {
+    id: 'artist5',
+    name: 'The Rhythm Collective',
+    image: 'https://images.unsplash.com/photo-1501612780327-45045538702b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    subscribers: '890K followers',
+    bio: 'The Rhythm Collective is a dynamic jazz fusion ensemble that combines traditional jazz elements with contemporary world music influences. Their innovative arrangements and virtuosic performances have earned them acclaim in the international jazz scene.'
+  },
+  {
+    id: 'artist6',
+    name: 'Digital Nomad',
+    image: 'https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    subscribers: '2.1M followers',
+    bio: 'Digital Nomad is a groundbreaking electronic music producer known for blending cutting-edge sound design with organic instruments. Their work spans multiple electronic genres, from ambient to techno, creating immersive sonic experiences that push the boundaries of electronic music.'
   }
 ];
 
@@ -110,6 +131,100 @@ export const albums = [
         album: 'Quantum Leap',
         cover: 'https://images.unsplash.com/photo-1619983081563-430f63602796?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFsYnVtJTIwY292ZXJ8ZW58MHx8MHx8fDA%3D',
         duration: 247
+      }
+    ]
+  },
+  {
+    id: 'album4',
+    title: 'Moonlit Reverie',
+    artist: 'Luna Eclipse',
+    artistId: 'artist4',
+    year: '2023',
+    cover: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    tracks: [
+      {
+        id: 'track8',
+        title: 'Stardust Dreams',
+        artist: 'Luna Eclipse',
+        album: 'Moonlit Reverie',
+        cover: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+        duration: 256
+      },
+      {
+        id: 'track9',
+        title: 'Silver Lining',
+        artist: 'Luna Eclipse',
+        album: 'Moonlit Reverie',
+        cover: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+        duration: 234
+      },
+      {
+        id: 'track10',
+        title: 'Celestial Dance',
+        artist: 'Luna Eclipse',
+        album: 'Moonlit Reverie',
+        cover: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+        duration: 289
+      }
+    ]
+  },
+  {
+    id: 'album5',
+    title: 'Fusion Horizons',
+    artist: 'The Rhythm Collective',
+    artistId: 'artist5',
+    year: '2023',
+    cover: 'https://images.unsplash.com/photo-1511735111819-9a3f7709049c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    tracks: [
+      {
+        id: 'track11',
+        title: 'Global Groove',
+        artist: 'The Rhythm Collective',
+        album: 'Fusion Horizons',
+        cover: 'https://images.unsplash.com/photo-1511735111819-9a3f7709049c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+        duration: 342
+      },
+      {
+        id: 'track12',
+        title: 'Syncopated Journey',
+        artist: 'The Rhythm Collective',
+        album: 'Fusion Horizons',
+        cover: 'https://images.unsplash.com/photo-1511735111819-9a3f7709049c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+        duration: 298
+      }
+    ]
+  },
+  {
+    id: 'album6',
+    title: 'Digital Landscapes',
+    artist: 'Digital Nomad',
+    artistId: 'artist6',
+    year: '2023',
+    cover: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+    tracks: [
+      {
+        id: 'track13',
+        title: 'Binary Sunset',
+        artist: 'Digital Nomad',
+        album: 'Digital Landscapes',
+        cover: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+        duration: 315
+      },
+      {
+        id: 'track14',
+        title: 'Neural Networks',
+        artist: 'Digital Nomad',
+        album: 'Digital Landscapes',
+        cover: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+        duration: 287
+      },
+      {
+        id: 'track15',
+        title: 'Quantum Data',
+        artist: 'Digital Nomad',
+        album: 'Digital Landscapes',
+        cover: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+        duration: 328
       }
     ]
   }

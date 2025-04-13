@@ -31,6 +31,7 @@ const Sidebar = () => {
       
       {/* Main navigation */}
       <div className="px-2">
+        
         <h2 className="text-xs uppercase text-text-secondary font-semibold px-4 mb-2">Main</h2>
         <NavLink to="/dashboard" className={({isActive}) => `sidebar-icon ${isActive ? 'active' : ''}`}>
           <HomeIcon className="w-5 h-5" />
@@ -38,7 +39,7 @@ const Sidebar = () => {
         </NavLink>
         <NavLink to="/search" className={({isActive}) => `sidebar-icon ${isActive ? 'active' : ''}`}>
           <MagnifyingGlassIcon className="w-5 h-5" />
-          <span>Search</span>
+          <span>Discover</span>
         </NavLink>
         <NavLink to="/statistics" className={({isActive}) => `sidebar-icon ${isActive ? 'active' : ''}`}>
           <ChartBarIcon className="w-5 h-5" />
@@ -69,12 +70,8 @@ const Sidebar = () => {
       </div>
       
       {/* Library */}
-      <div className="px-2 mt-6">
-        <h2 className="text-xs uppercase text-text-secondary font-semibold px-4 mb-2">Library</h2>
-        <div className="sidebar-icon cursor-pointer">
-          <ListBulletIcon className="w-5 h-5" />
-          <span>Playlists</span>
-        </div>
+      <div className="px-2 mt-auto pt-6">
+      <hr className="border-white/10 mb-1" />
         <div className="sidebar-icon cursor-pointer">
           <PlusIcon className="w-5 h-5" />
           <span>Create Playlist</span>

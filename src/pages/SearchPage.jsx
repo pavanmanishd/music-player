@@ -41,7 +41,32 @@ const SearchPage = () => {
       ) : (
         <>
           <h1 className="page-title">Discover Music</h1>
-          
+                  
+          {/* Featured Albums */}
+          <div className="mb-10">
+            <div className="flex items-center gap-2 mb-4">
+              <FireIcon className="w-6 h-6 text-accent" />
+              <h2 className="text-xl font-bold">Featured Albums</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+              {results.albums.map(album => (
+                <Link 
+                  key={album.id} 
+                  to={`/album/${album.id}`}
+                  className="card p-4 hover:bg-white/5 transition-colors"
+                >
+                  <img 
+                    src={album.cover} 
+                    alt={album.title} 
+                    className="w-full aspect-square rounded-lg mb-3"
+                  />
+                  <h3 className="font-medium text-sm">{album.title}</h3>
+                  <p className="text-xs text-text-secondary">{album.artist}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
           {/* Popular Tracks Section */}
           <div className="mb-10">
             <div className="flex items-center gap-2 mb-4">
@@ -90,31 +115,6 @@ const SearchPage = () => {
                   />
                   <h3 className="font-medium">{artist.name}</h3>
                   <p className="text-xs text-text-secondary">{artist.subscribers}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-          
-          {/* Featured Albums */}
-          <div className="mb-10">
-            <div className="flex items-center gap-2 mb-4">
-              <FireIcon className="w-6 h-6 text-accent" />
-              <h2 className="text-xl font-bold">Featured Albums</h2>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-              {results.albums.map(album => (
-                <Link 
-                  key={album.id} 
-                  to={`/album/${album.id}`}
-                  className="card p-4 hover:bg-white/5 transition-colors"
-                >
-                  <img 
-                    src={album.cover} 
-                    alt={album.title} 
-                    className="w-full aspect-square rounded-lg mb-3"
-                  />
-                  <h3 className="font-medium text-sm">{album.title}</h3>
-                  <p className="text-xs text-text-secondary">{album.artist}</p>
                 </Link>
               ))}
             </div>
