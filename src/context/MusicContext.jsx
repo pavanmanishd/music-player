@@ -15,7 +15,8 @@ export const MusicProvider = ({ children }) => {
   const [isShuffled, setIsShuffled] = useState(false);
   const [isRepeating, setIsRepeating] = useState(false);
   const [favorites, setFavorites] = useState([]);
-  const [showQueue, setShowQueue] = useState(false);
+  // Changed default value to true so queue is open by default
+  const [showQueue, setShowQueue] = useState(true);
   
   // New state for additional features
   const [listenLater, setListenLater] = useState([]);
@@ -71,6 +72,38 @@ export const MusicProvider = ({ children }) => {
       const trackIndex = trackList.findIndex(t => t.id === track.id);
       const remainingTracks = trackList.slice(trackIndex + 1);
       setQueue(remainingTracks);
+    } else if (queue.length === 0) {
+      // Add default songs to queue if it's empty
+      const defaultQueue = [
+        {
+          id: 'default-1',
+          title: 'Starlight',
+          artist: 'Muse',
+          album: 'Black Holes and Revelations',
+          cover: 'https://picsum.photos/id/65/300/300',
+          duration: 240,
+          path: '/audio/sample.mp3'
+        },
+        {
+          id: 'default-2',
+          title: 'Blinding Lights',
+          artist: 'The Weeknd',
+          album: 'After Hours',
+          cover: 'https://picsum.photos/id/42/300/300',
+          duration: 203,
+          path: '/audio/sample.mp3'
+        },
+        {
+          id: 'default-3',
+          title: 'Levitating',
+          artist: 'Dua Lipa',
+          album: 'Future Nostalgia',
+          cover: 'https://picsum.photos/id/24/300/300',
+          duration: 217,
+          path: '/audio/sample.mp3'
+        }
+      ];
+      setQueue(defaultQueue);
     }
     
     // Reset time

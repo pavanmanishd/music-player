@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         'ephesis': ['Ephesis', 'cursive'],
+        'sans': ['Lexend', 'sans-serif'],
       },
       colors: {
         primary: "#1a1a1a",
