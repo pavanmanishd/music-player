@@ -44,45 +44,32 @@ const Sidebar = () => {
           <HeartIcon className="w-5 h-5" />
           <span>Favourites</span>
         </NavLink>
-        <NavLink to="/listen-later" className={({isActive}) => `sidebar-icon ${isActive ? 'active' : ''}`}>
-          <ClockIcon className="w-5 h-5" />
-          <span>Listen Later</span>
-        </NavLink>
         <NavLink to="/history" className={({isActive}) => `sidebar-icon ${isActive ? 'active' : ''}`}>
           <ArrowPathIcon className="w-5 h-5" />
           <span>History</span>
         </NavLink>
+      </div>
+      
+      {/* Explore */}
+      <div className="px-2 mt-6">
+        <h2 className="text-xs uppercase text-text-secondary font-semibold px-4 mb-2">Explore</h2>
         <NavLink to="/podcasts" className={({isActive}) => `sidebar-icon ${isActive ? 'active' : ''}`}>
           <MicrophoneIcon className="w-5 h-5" />
           <span>Podcasts</span>
         </NavLink>
       </div>
       
-      {/* Your Playlists */}
-      <div className="px-2 mt-6 flex-1 overflow-y-auto">
-        <div className="flex items-center justify-between px-4 mb-2">
-          <h2 className="text-xs uppercase text-text-secondary font-semibold">Your Playlists</h2>
+      {/* Library */}
+      <div className="px-2 mt-6">
+        <h2 className="text-xs uppercase text-text-secondary font-semibold px-4 mb-2">Library</h2>
+        <div className="sidebar-icon cursor-pointer">
+          <ListBulletIcon className="w-5 h-5" />
+          <span>Playlists</span>
         </div>
-        <NavLink to="/playlist/1" className={({isActive}) => `sidebar-icon ${isActive ? 'active' : ''}`}>
-          <span>Metalcore</span>
-        </NavLink>
-        <NavLink to="/playlist/2" className={({isActive}) => `sidebar-icon ${isActive ? 'active' : ''}`}>
-          <span>Electro</span>
-        </NavLink>
-        <NavLink to="/playlist/3" className={({isActive}) => `sidebar-icon ${isActive ? 'active' : ''}`}>
-          <span>Funk</span>
-        </NavLink>
-        <NavLink to="/playlist/4" className={({isActive}) => `sidebar-icon ${isActive ? 'active' : ''}`}>
-          <span>Disco</span>
-        </NavLink>
-      </div>
-      
-      {/* Create new playlist button */}
-      <div className="p-4 border-t border-gray-800">
-        <button className="flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors w-full">
+        <div className="sidebar-icon cursor-pointer">
           <PlusIcon className="w-5 h-5" />
-          <span>Create new playlist</span>
-        </button>
+          <span>Create Playlist</span>
+        </div>
       </div>
     </div>
   );

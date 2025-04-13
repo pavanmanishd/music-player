@@ -29,7 +29,7 @@ const HistoryPage = () => {
   
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-8">Listening History</h1>
+      <h1 className="page-title">Listening History</h1>
       
       {isLoading ? (
         <div className="flex items-center justify-center h-64">
@@ -40,10 +40,10 @@ const HistoryPage = () => {
           {Object.entries(groupedHistory).map(([date, tracks]) => (
             <div key={date}>
               <h2 className="text-lg font-bold mb-4">{date}</h2>
-              <div className="bg-secondary rounded-lg overflow-hidden">
+              <div className="card overflow-hidden">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-gray-700 text-text-secondary text-left">
+                    <tr className="table-header">
                       <th className="p-4">Title</th>
                       <th className="p-4">Artist</th>
                       <th className="p-4">Album</th>
@@ -55,7 +55,7 @@ const HistoryPage = () => {
                     {tracks.map(track => (
                       <tr 
                         key={`${track.id}-${track.playedAt}`}
-                        className="border-b border-gray-700 hover:bg-gray-700"
+                        className="table-row"
                       >
                         <td 
                           className="p-4 cursor-pointer"
@@ -65,7 +65,7 @@ const HistoryPage = () => {
                             <img 
                               src={track.cover} 
                               alt={track.title} 
-                              className="w-10 h-10 rounded mr-3"
+                              className="w-10 h-10 rounded mr-3 shadow-md"
                             />
                             <span>{track.title}</span>
                           </div>
@@ -77,7 +77,7 @@ const HistoryPage = () => {
                         </td>
                         <td className="p-4 text-right">
                           <button 
-                            className="text-text-secondary hover:text-accent"
+                            className="text-text-secondary hover:text-accent transition-colors"
                             onClick={() => playTrack(track)}
                           >
                             <PlayIcon className="w-5 h-5" />
@@ -92,10 +92,10 @@ const HistoryPage = () => {
           ))}
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center h-64 bg-secondary rounded-lg">
-          <ArrowPathIcon className="w-16 h-16 text-gray-600 mb-4" />
+        <div className="empty-state">
+          <ArrowPathIcon className="w-16 h-16 text-white/20 mb-4" />
           <h2 className="text-xl font-bold mb-2">No listening history</h2>
-          <p className="text-text-secondary">Start listening to see your history</p>
+          <p className="text-text-secondary">Your listening history will appear here</p>
         </div>
       )}
     </div>

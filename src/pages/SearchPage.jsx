@@ -37,9 +37,9 @@ const SearchPage = () => {
   return (
     <div>
       {searchQuery ? (
-        <h1 className="text-3xl font-bold mb-8">Search results for "{searchQuery}"</h1>
+        <h1 className="page-title">Search results for "{searchQuery}"</h1>
       ) : (
-        <h1 className="text-3xl font-bold mb-8">Browse Playlists</h1>
+        <h1 className="page-title">Browse Playlists</h1>
       )}
       
       {/* Artists section */}
@@ -51,7 +51,7 @@ const SearchPage = () => {
               <Link 
                 key={artist.id} 
                 to={`/artist/${artist.id}`}
-                className="p-4 bg-gray-800 rounded-lg flex flex-col items-center text-center hover:bg-gray-700 transition-colors"
+                className="card p-4 flex flex-col items-center text-center hover:bg-white/5 transition-colors"
               >
                 <img 
                   src={artist.image} 
@@ -77,10 +77,10 @@ const SearchPage = () => {
                   <img 
                     src={album.cover} 
                     alt={album.title} 
-                    className="w-full aspect-square object-cover rounded-lg"
+                    className="w-full aspect-square object-cover rounded-lg shadow-lg"
                   />
                   <button 
-                    className="absolute bottom-3 right-3 bg-accent rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute bottom-3 right-3 bg-accent rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
                     onClick={() => {
                       if (album.tracks.length > 0) {
                         playTrack(album.tracks[0], album.tracks);
@@ -106,7 +106,7 @@ const SearchPage = () => {
             {results.tracks.map((track, index) => (
               <div 
                 key={track.id}
-                className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-800 cursor-pointer"
+                className="card flex items-center gap-4 p-3 hover:bg-white/5 cursor-pointer transition-colors"
                 onClick={() => playTrack(track)}
               >
                 <img 
@@ -133,13 +133,13 @@ const SearchPage = () => {
               <Link 
                 key={playlist.id} 
                 to={`/playlist/${playlist.id}`}
-                className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition-colors"
+                className="card overflow-hidden hover:bg-white/5 transition-colors"
               >
                 <div className="p-4 flex items-center gap-4">
                   <img 
                     src={playlist.cover} 
                     alt={playlist.title} 
-                    className="w-16 h-16 rounded"
+                    className="w-16 h-16 rounded shadow-md"
                   />
                   <div>
                     <h3 className="font-medium">{playlist.title}</h3>
@@ -158,7 +158,7 @@ const SearchPage = () => {
        results.albums.length === 0 && 
        results.tracks.length === 0 && 
        results.playlists.length === 0 && (
-        <div className="text-center py-16">
+        <div className="empty-state">
           <h2 className="text-2xl font-bold mb-2">No results found</h2>
           <p className="text-text-secondary">Try searching for something else</p>
         </div>

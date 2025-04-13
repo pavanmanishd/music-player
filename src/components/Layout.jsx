@@ -19,8 +19,8 @@ const Layout = () => {
           {/* Navbar */}
           <Navbar />
           
-          {/* Main content area */}
-          <div className="flex-1 overflow-y-auto">
+          {/* Main content area - Added px-8 py-6 for consistent padding */}
+          <div className="flex-1 overflow-y-auto px-8 py-6">
             <Outlet />
           </div>
         </div>

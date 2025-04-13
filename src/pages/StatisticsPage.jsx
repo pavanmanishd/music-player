@@ -4,7 +4,8 @@ import {
   MusicalNoteIcon, 
   UserIcon, 
   ClockIcon,
-  ChartBarIcon
+  ChartBarIcon,
+  PlayIcon
 } from '@heroicons/react/24/solid';
 import { useMusicContext } from '../context/MusicContext';
 import { 
@@ -58,44 +59,44 @@ const StatisticsPage = () => {
   
   return (
     <div className="space-y-10">
-      <h1 className="text-3xl font-bold mb-8">Your Listening Statistics</h1>
+      <h1 className="page-title">Your Listening Statistics</h1>
       
       {/* Overview cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-secondary rounded-lg p-6 flex items-center justify-between">
+        <div className="card p-6 flex items-center justify-between">
           <div>
             <h3 className="text-text-secondary text-sm">Total Tracks</h3>
             <p className="text-3xl font-bold">{stats.listeningStats.totalTracks || 0}</p>
           </div>
-          <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center">
-            <MusicalNoteIcon className="w-6 h-6" />
+          <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
+            <MusicalNoteIcon className="w-6 h-6 text-accent" />
           </div>
         </div>
-        <div className="bg-secondary rounded-lg p-6 flex items-center justify-between">
+        <div className="card p-6 flex items-center justify-between">
           <div>
             <h3 className="text-text-secondary text-sm">Favorites</h3>
             <p className="text-3xl font-bold">{stats.listeningStats.totalFavorites || 0}</p>
           </div>
-          <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center">
-            <HeartIcon className="w-6 h-6" />
+          <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
+            <HeartIcon className="w-6 h-6 text-accent" />
           </div>
         </div>
-        <div className="bg-secondary rounded-lg p-6 flex items-center justify-between">
+        <div className="card p-6 flex items-center justify-between">
           <div>
             <h3 className="text-text-secondary text-sm">Artists</h3>
             <p className="text-3xl font-bold">{stats.listeningStats.uniqueArtists || 0}</p>
           </div>
-          <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center">
-            <UserIcon className="w-6 h-6" />
+          <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
+            <UserIcon className="w-6 h-6 text-accent" />
           </div>
         </div>
-        <div className="bg-secondary rounded-lg p-6 flex items-center justify-between">
+        <div className="card p-6 flex items-center justify-between">
           <div>
             <h3 className="text-text-secondary text-sm">Listening Time</h3>
             <p className="text-3xl font-bold">{stats.listeningStats.totalHours || 0}h</p>
           </div>
-          <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center">
-            <ClockIcon className="w-6 h-6" />
+          <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
+            <ClockIcon className="w-6 h-6 text-accent" />
           </div>
         </div>
       </div>
@@ -103,17 +104,17 @@ const StatisticsPage = () => {
       {/* Top artists */}
       <div>
         <h2 className="text-xl font-bold mb-4">Your Top Artists</h2>
-        <div className="bg-secondary rounded-lg overflow-hidden">
+        <div className="card overflow-hidden">
           {stats.topArtists.map((artist, index) => (
             <div 
               key={artist.id}
-              className="flex items-center p-4 border-b border-gray-700 last:border-b-0 hover:bg-gray-700"
+              className="flex items-center p-4 border-b border-white/10 last:border-b-0 hover:bg-white/5"
             >
               <div className="text-2xl font-bold text-text-secondary w-10">{index + 1}</div>
               <img 
                 src={artist.image} 
                 alt={artist.name} 
-                className="w-16 h-16 rounded-full object-cover mx-4"
+                className="w-16 h-16 rounded-full object-cover mx-4 shadow-lg"
               />
               <div className="flex-1">
                 <h3 className="font-bold">{artist.name}</h3>
@@ -130,14 +131,14 @@ const StatisticsPage = () => {
       {/* Top genres */}
       <div>
         <h2 className="text-xl font-bold mb-4">Your Top Genres</h2>
-        <div className="bg-secondary rounded-lg p-6">
+        <div className="card p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {stats.topGenres.map((genre, index) => (
               <div key={genre.name} className="flex items-center">
                 <div className="text-lg font-bold text-text-secondary w-8">{index + 1}</div>
                 <div className="flex-1">
                   <h3 className="font-medium">{genre.name}</h3>
-                  <div className="w-full bg-gray-700 h-2 rounded-full mt-1">
+                  <div className="w-full bg-white/10 h-2 rounded-full mt-1">
                     <div 
                       className="bg-accent h-2 rounded-full" 
                       style={{ width: `${genre.percentage}%` }}
@@ -156,10 +157,10 @@ const StatisticsPage = () => {
       {/* Most played tracks */}
       <div>
         <h2 className="text-xl font-bold mb-4">Most Played Tracks</h2>
-        <div className="bg-secondary rounded-lg overflow-hidden">
+        <div className="card overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-700 text-text-secondary text-left">
+              <tr className="table-header">
                 <th className="p-4 w-12">#</th>
                 <th className="p-4">Title</th>
                 <th className="p-4">Artist</th>
@@ -171,7 +172,7 @@ const StatisticsPage = () => {
               {stats.mostPlayedTracks.map((track, index) => (
                 <tr 
                   key={track.id}
-                  className="border-b border-gray-700 hover:bg-gray-700"
+                  className="table-row"
                 >
                   <td className="p-4">{index + 1}</td>
                   <td className="p-4">
@@ -179,7 +180,7 @@ const StatisticsPage = () => {
                       <img 
                         src={track.cover} 
                         alt={track.title} 
-                        className="w-10 h-10 rounded mr-3"
+                        className="w-10 h-10 rounded mr-3 shadow-md"
                       />
                       <span>{track.title}</span>
                     </div>
@@ -188,10 +189,10 @@ const StatisticsPage = () => {
                   <td className="p-4 text-right">{track.playCount}</td>
                   <td className="p-4 text-right">
                     <button 
-                      className="text-text-secondary hover:text-accent"
+                      className="text-text-secondary hover:text-accent transition-colors"
                       onClick={() => playTrack(track)}
                     >
-                      <ChartBarIcon className="w-5 h-5" />
+                      <PlayIcon className="w-5 h-5" />
                     </button>
                   </td>
                 </tr>
@@ -204,7 +205,7 @@ const StatisticsPage = () => {
       {/* Listening activity */}
       <div>
         <h2 className="text-xl font-bold mb-4">Listening Activity</h2>
-        <div className="bg-secondary rounded-lg p-6">
+        <div className="card p-6">
           <div className="h-64 flex items-end justify-between">
             {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, index) => {
               // Use actual data from stats if available, otherwise use demo data
@@ -215,7 +216,7 @@ const StatisticsPage = () => {
               return (
                 <div key={day} className="flex flex-col items-center w-full mx-1">
                   <div 
-                    className="w-12 bg-accent rounded-t-md transition-all duration-500 ease-in-out hover:bg-accent-light hover:shadow-lg" 
+                    className="w-12 bg-accent rounded-t-md transition-all duration-500 ease-in-out hover:bg-accent-hover hover:shadow-lg" 
                     style={{ height: `${height}px` }}
                   ></div>
                   <p className="text-text-secondary text-sm mt-2">{day}</p>

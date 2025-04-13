@@ -19,7 +19,7 @@ const PodcastsPage = () => {
   
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-8">Podcasts</h1>
+      <h1 className="page-title">Podcasts</h1>
       
       {isLoading ? (
         <div className="flex items-center justify-center h-64">
@@ -28,12 +28,22 @@ const PodcastsPage = () => {
       ) : podcasts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {podcasts.map(podcast => (
-            <div key={podcast.id} className="bg-secondary rounded-lg overflow-hidden">
-              <img 
-                src={podcast.cover} 
-                alt={podcast.title} 
-                className="w-full h-48 object-cover"
-              />
+            <div key={podcast.id} className="card overflow-hidden group hover:shadow-lg transition-all">
+              <div className="relative">
+                <img 
+                  src={podcast.cover} 
+                  alt={podcast.title} 
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <button 
+                    className="bg-accent hover:bg-accent-hover text-white p-3 rounded-full transform scale-90 group-hover:scale-100 transition-all"
+                    onClick={() => playTrack(podcast.latestEpisode)}
+                  >
+                    <PlayIcon className="w-6 h-6" />
+                  </button>
+                </div>
+              </div>
               <div className="p-4">
                 <h2 className="text-lg font-bold mb-1">{podcast.title}</h2>
                 <p className="text-text-secondary text-sm mb-3">{podcast.author}</p>
@@ -41,7 +51,7 @@ const PodcastsPage = () => {
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-text-secondary">{podcast.episodes} episodes</span>
                   <button 
-                    className="flex items-center gap-2 bg-accent hover:bg-accent-hover text-white px-4 py-1.5 rounded-full text-sm"
+                    className="flex items-center gap-2 bg-accent/10 hover:bg-accent/20 text-accent px-4 py-1.5 rounded-full text-sm transition-colors"
                     onClick={() => playTrack(podcast.latestEpisode)}
                   >
                     <PlayIcon className="w-4 h-4" />
@@ -53,8 +63,8 @@ const PodcastsPage = () => {
           ))}
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center h-64 bg-secondary rounded-lg">
-          <MicrophoneIcon className="w-16 h-16 text-gray-600 mb-4" />
+        <div className="empty-state">
+          <MicrophoneIcon className="w-16 h-16 text-white/20 mb-4" />
           <h2 className="text-xl font-bold mb-2">No podcasts available</h2>
           <p className="text-text-secondary">Check back later for new podcasts</p>
         </div>

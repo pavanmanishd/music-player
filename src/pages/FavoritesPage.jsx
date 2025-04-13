@@ -28,10 +28,10 @@ const FavoritesPage = () => {
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold">Favorites</h1>
+        <h1 className="page-title">Favorites</h1>
         {tracks.length > 0 && (
           <button 
-            className="flex items-center gap-2 bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full"
+            className="flex items-center gap-2 bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full shadow-md transition-colors"
             onClick={() => playTrack(tracks[0], tracks)}
           >
             <PlayIcon className="w-5 h-5" />
@@ -45,10 +45,10 @@ const FavoritesPage = () => {
           <p>Loading...</p>
         </div>
       ) : tracks.length > 0 ? (
-        <div className="bg-secondary rounded-lg overflow-hidden">
+        <div className="card overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-700 text-text-secondary text-left">
+              <tr className="table-header">
                 <th className="p-4 w-12">#</th>
                 <th className="p-4">Title</th>
                 <th className="p-4">Album</th>
@@ -64,7 +64,7 @@ const FavoritesPage = () => {
                 return (
                   <tr 
                     key={track.id}
-                    className={`border-b border-gray-700 hover:bg-gray-700 ${isCurrentTrack ? 'text-accent' : ''}`}
+                    className={`table-row ${isCurrentTrack ? 'text-accent' : ''}`}
                   >
                     <td className="p-4">{index + 1}</td>
                     <td 
@@ -75,7 +75,7 @@ const FavoritesPage = () => {
                         <img 
                           src={track.cover} 
                           alt={track.title} 
-                          className="w-10 h-10 rounded mr-3"
+                          className="w-10 h-10 rounded mr-3 shadow-md"
                         />
                         <span>{track.title}</span>
                       </div>
@@ -85,7 +85,7 @@ const FavoritesPage = () => {
                     <td className="p-4 text-right">{formatTime(track.duration)}</td>
                     <td className="p-4 text-right">
                       <button 
-                        className="text-accent"
+                        className="text-accent hover:text-accent/80 transition-colors"
                         onClick={() => toggleFavorite(track.id)}
                       >
                         <HeartIcon className="w-5 h-5" />
@@ -98,8 +98,8 @@ const FavoritesPage = () => {
           </table>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center h-64 bg-secondary rounded-lg">
-          <HeartIcon className="w-16 h-16 text-gray-600 mb-4" />
+        <div className="empty-state">
+          <HeartIcon className="w-16 h-16 text-white/20 mb-4" />
           <h2 className="text-xl font-bold mb-2">No favorites yet</h2>
           <p className="text-text-secondary">Start adding songs to your favorites</p>
         </div>

@@ -60,7 +60,7 @@ const AlbumPage = () => {
           </p>
           <div className="flex items-center gap-4">
             <button 
-              className="flex items-center gap-2 bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full"
+              className="flex items-center gap-2 bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-full shadow-md transition-colors"
               onClick={() => {
                 if (album.tracks.length > 0) {
                   playTrack(album.tracks[0], album.tracks);
@@ -85,62 +85,63 @@ const AlbumPage = () => {
       
       {/* Tracks list */}
       <div className="mt-8">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b border-gray-800 text-text-secondary text-left">
-              <th className="pb-2 w-12">#</th>
-              <th className="pb-2">Title</th>
-              <th className="pb-2 w-24 text-right"><ClockIcon className="w-5 h-5 ml-auto" /></th>
-              <th className="pb-2 w-16"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {album.tracks.map((track, index) => {
-              const isCurrentTrack = currentTrack && currentTrack.id === track.id;
-              const isFavorite = favorites.includes(track.id);
-              
-              return (
-                <tr 
-                  key={track.id}
-                  className={`border-b border-gray-800 hover:bg-gray-800 ${isCurrentTrack ? 'text-accent' : ''}`}
-                >
-                  <td className="py-3">{index + 1}</td>
-                  <td 
-                    className="py-3 cursor-pointer"
-                    onClick={() => playTrack(track, album.tracks.slice(index))}
+        <div className="card overflow-hidden">
+          <table className="w-full">
+            <thead>
+              <tr className="table-header">
+                <th className="p-4 w-12">#</th>
+                <th className="p-4">Title</th>
+                <th className="p-4 text-right"><ClockIcon className="w-5 h-5 ml-auto" /></th>
+                <th className="p-4 w-16"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {album.tracks.map((track, index) => {
+                const isCurrentTrack = currentTrack && currentTrack.id === track.id;
+                const isFavorite = favorites.includes(track.id);
+                
+                return (
+                  <tr 
+                    key={track.id}
+                    className={`table-row ${isCurrentTrack ? 'text-accent' : ''}`}
                   >
-                    <div className="flex items-center">
-                      {isCurrentTrack && isPlaying ? (
-                        <span className="w-4 h-4 mr-2 relative flex justify-center items-center">
-                          <span className="animate-music-bar h-2 w-0.5 bg-accent absolute left-0"></span>
-                          <span className="animate-music-bar animation-delay-200 h-3 w-0.5 bg-accent absolute left-1"></span>
-                          <span className="animate-music-bar animation-delay-400 h-1.5 w-0.5 bg-accent absolute left-2"></span>
-                        </span>
-                      ) : (
-                        <PlayIcon className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100" />
-                      )}
-                      {track.title}
-                    </div>
-                  </td>
-                  <td className="py-3 text-right">{formatTime(track.duration)}</td>
-                  <td className="py-3 text-right">
-                    <button 
-                      className="text-text-secondary hover:text-accent"
-                      onClick={() => toggleFavorite(track.id)}
+                    <td className="p-4">{index + 1}</td>
+                    <td 
+                      className="p-4 cursor-pointer"
+                      onClick={() => playTrack(track, album.tracks.slice(index))}
                     >
-                      {isFavorite ? (
-                        <HeartIcon className="w-5 h-5 text-accent" />
-                      ) : (
-                        <HeartOutlineIcon className="w-5 h-5" />
-                      )}
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                      {track.title}
+                    </td>
+                    <td className="p-4 text-right">{formatTime(track.duration)}</td>
+                    <td className="p-4 text-right">
+                      <button 
+                        className={`${isFavorite ? 'text-accent' : 'text-text-secondary'} hover:text-accent transition-colors`}
+                        onClick={() => toggleFavorite(track.id)}
+                      >
+                        {isFavorite ? (
+                          <HeartIcon className="w-5 h-5" />
+                        ) : (
+                          <HeartOutlineIcon className="w-5 h-5" />
+                        )}
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
+      
+      {/* Album description */}
+      {album.description && (
+        <div className="mt-8">
+          <h2 className="text-xl font-bold mb-4">About</h2>
+          <div className="card p-6">
+            <p className="text-text-secondary">{album.description}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

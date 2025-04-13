@@ -10,7 +10,7 @@ import SearchPage from './pages/SearchPage';
 import FavoritesPage from './pages/FavoritesPage';
 import PodcastsPage from './pages/PodcastsPage';
 import HistoryPage from './pages/HistoryPage';
-import ListenLaterPage from './pages/ListenLaterPage';
+// Removed ListenLaterPage import
 import StatisticsPage from './pages/StatisticsPage';
 
 function App() {
@@ -28,7 +28,6 @@ function App() {
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/podcasts" element={<PodcastsPage />} />
             <Route path="/history" element={<HistoryPage />} />
-            <Route path="/listen-later" element={<ListenLaterPage />} />
             <Route path="/statistics" element={<StatisticsPage />} />
           </Route>
         </Routes>

@@ -41,6 +41,27 @@ body {
   .btn-secondary {
     @apply bg-secondary text-white hover:bg-opacity-80;
   }
+  
+  /* New styles for consistent page elements */
+  .page-title {
+    @apply text-3xl font-bold mb-8;
+  }
+  
+  .card {
+    @apply bg-black/30 backdrop-blur-sm rounded-lg overflow-hidden border border-white/10;
+  }
+  
+  .table-header {
+    @apply border-b border-white/10 text-text-secondary text-left;
+  }
+  
+  .table-row {
+    @apply border-b border-white/10 hover:bg-white/5 transition-colors;
+  }
+  
+  .empty-state {
+    @apply flex flex-col items-center justify-center h-64 bg-black/20 backdrop-blur-sm rounded-lg border border-white/10;
+  }
 }
 
 @keyframes music-bar {
