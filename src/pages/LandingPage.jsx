@@ -80,7 +80,7 @@ const LandingPage = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            src="/src/assets/dashboard.png" 
+            src="../assets/dashboard.png" 
             alt="MELO App Preview" 
             className="w-full rounded-lg shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-gray-900 hover:scale-105 transition-transform duration-300"
           />
